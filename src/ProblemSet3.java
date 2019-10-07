@@ -115,7 +115,51 @@ public class ProblemSet3 {
      */
 
     public void gpa() {
+      final double GRADE_A = 4.00;
+      final double GRADE_B = 3.00;
+      final double GRADE_C = 2.00;
+      final double GRADE_D = 1.00;
+      final double GRADE_F = 0.00;
+      final double DIFFERENCE_POINTS = 0.33;
+      String plusMinus = "";
+      double gpa = 0.00;
 
+      System.out.print("\nEnter a letter grade: ");
+      in.nextLine();
+      String letterGrade1 = in.nextLine();
+      letterGrade1 = letterGrade1.trim();
+      letterGrade1 = letterGrade1.toUpperCase();
+      String firstLetter = letterGrade1.substring(0, 1);
+      if(letterGrade1.length() == 2) {
+        plusMinus = letterGrade1.substring(1, 2);
+      }
+      if(letterGrade1.length() <= 2 && letterGrade1.length() > 0 && (firstLetter.equals("A") || firstLetter.equals("B") || firstLetter.equals("C") || firstLetter.equals("D") || firstLetter.equals("F")) && (plusMinus.equals("") || plusMinus.equals("+") || plusMinus.equals("-")) && !letterGrade1.equals("F+") && !letterGrade1.equals("F-")) {
+        if(plusMinus.equals("+")) {
+          gpa += DIFFERENCE_POINTS;
+        } else if(plusMinus.equals("-")) {
+          gpa -= DIFFERENCE_POINTS;
+        }
+        if(firstLetter.equals("A")) {
+          gpa += GRADE_A;
+          if(gpa > 0) {
+            gpa -= DIFFERENCE_POINTS;
+          }
+        } else if(firstLetter.equals("B")) {
+          gpa += GRADE_B;
+        } else if(firstLetter.equals("C")) {
+          gpa += GRADE_C;
+        } else if(firstLetter.equals("D")) {
+          gpa += GRADE_D;
+        } else if(firstLetter.equals("F")) {
+          gpa += GRADE_F;
+          if(gpa < 0) {
+            gpa += DIFFERENCE_POINTS;
+          }
+        }
+        System.out.printf("\nYour GPA is %.2f.\n", gpa);
+      } else {
+        System.out.println("\nThat's not a valid letter grade.");
+      }
     }
 
     /*
