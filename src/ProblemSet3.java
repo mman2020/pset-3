@@ -300,7 +300,40 @@ public class ProblemSet3 {
      */
 
     public void state() {
+      System.out.print("\nEnter a temperature: ");
+      double temperature = in.nextDouble();
+      System.out.print("Enter a scale: ");
+      in.nextLine();
+      String scale = in.nextLine();
+      scale = scale.toUpperCase();
+      String matter = "";
+      final int FREEZING_FAHRENHEIT = 32;
+      final int BOILING_FAHRENHEIT = 212;
+      final int FREEZING_CELSIUS = 0;
+      final int BOILING_CELSIUS = 100;
 
+      if (scale.equals("F") || scale.equals("C")) {
+        if (scale.equals("F")) {
+          if (temperature <= FREEZING_FAHRENHEIT) {
+            matter = "Solid.";
+          } else if (temperature > FREEZING_FAHRENHEIT && temperature < BOILING_FAHRENHEIT) {
+            matter = "Liquid.";
+          } else if (temperature >= BOILING_FAHRENHEIT) {
+            matter = "Gas.";
+          }
+        } else if (scale.equals("C")) {
+          if (temperature <= FREEZING_CELSIUS) {
+            matter = "Solid.";
+          } else if (temperature > FREEZING_CELSIUS && temperature < BOILING_CELSIUS) {
+            matter = "Liquid.";
+          } else if (temperature >= BOILING_CELSIUS) {
+            matter = "Gas.";
+          }
+        }
+        System.out.println("\n" + matter);
+      } else {
+        System.out.println("\nThat's not a valid scale.");
+      }
     }
 
     /*
